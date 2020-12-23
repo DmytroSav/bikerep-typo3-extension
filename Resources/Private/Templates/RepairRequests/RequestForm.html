@@ -1,33 +1,7 @@
-<h1 class="text-center">Create new request</h1>
+<f:layout name="default"/>
 
-<f:form action="create" object="{newRepairRequest}" name="newRepairRequest" additionalAttributes="{role:'form'}">
-    
-    <div class="form-group">
-            <label>Request title</label>
-            <f:form.textfield property="title" class="form-control"/>
-    </div>
+  <f:section name="content">
 
-    <div class="form-group">
-            <label class="control-label">Request description</label>
-            <f:form.textarea property="request" class="form-control"/>
-    </div>
+    <f:render partial="RepairRequests/Form" arguments="{title: 'Create new Request', action: 'create', submitvalue: 'Send a request', repairRequest: repairRequest}"/>
 
-    <div class="form-group">
-      <label class="control-label">Bike Model</label>
-      <f:form.textfield property="bikeModel" class="form-control"/>
-    </div>
-
-    <div class="form-group">
-      <label class="control-label">Phone</label>
-      <f:form.textfield property="phone" class="form-control"/>
-    </div>
-
-    <div class="form-group">
-      <label class="control-label">Email</label>
-      <f:form.textfield property="email" class="form-control"/>
-    </div>
-
-      <f:form.submit value="Send request ->" class="btn btn-primary margin-right"/>     
-      <f:link.action action="list" class="btn btn-info">Disregard</f:link.action>     
-             
-</f:form>
+  </f:section>
