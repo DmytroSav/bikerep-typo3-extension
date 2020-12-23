@@ -1,0 +1,15 @@
+
+plugin.tx_bikerep_bikerepfront {
+    view {
+        # cat=plugin.tx_bikerep_bikerepfront/file; type=string; label=Path to template root (FE)
+        templateRootPath = EXT:bikerep/Resources/Private/Templates/
+        # cat=plugin.tx_bikerep_bikerepfront/file; type=string; label=Path to template partials (FE)
+        partialRootPath = EXT:bikerep/Resources/Private/Partials/
+        # cat=plugin.tx_bikerep_bikerepfront/file; type=string; label=Path to template layouts (FE)
+        layoutRootPath = EXT:bikerep/Resources/Private/Layouts/
+    }
+    persistence {
+        # cat=plugin.tx_bikerep_bikerepfront//a; type=string; label=Default storage PID
+        storagePid =
+    }
+}

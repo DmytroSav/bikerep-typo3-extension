@@ -1,0 +1,33 @@
+<h1 class="text-center">Change your request here:</h1>
+
+<f:form action="update" object="{repairRequest}" name="repairRequest" additionalAttributes="{role:'form'}">
+    
+    <div class="form-group">
+            <label>Request title</label>
+            <f:form.textfield property="title" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+            <label class="control-label">Request description</label>
+            <f:form.textarea property="request" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label">Bike Model</label>
+      <f:form.textfield property="bikeModel" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label">Phone</label>
+      <f:form.textfield property="phone" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label">Email</label>
+      <f:form.textfield property="email" class="form-control"/>
+    </div>
+
+      <f:form.submit value="Edit Request" class="btn btn-primary margin-right"/>     
+      <f:link.action action="list" class="btn btn-info">Disregard</f:link.action>     
+             
+</f:form>

@@ -1,0 +1,15 @@
+<h1 class="text-center">Repair Requests</h1>
+
+<ul class="list-group">
+    <f:for each="{repairRequests}" as="request">
+        <li class="list-group-item">{request.title} 
+            <span class="additional-info"> | <strong>M: {request.bikeModel}</strong></span>
+            <span class="additional-info"> | Ph: {request.phone}</span>
+            <f:link.action action="confirmDelete" arguments="{request:request}" class="btn btn-danger btn-xs pull-right">DELETE</f:link.action>
+            <f:link.action action="updateForm" arguments="{request:request}" class="btn btn-primary btn-xs pull-right margin-right">EDIT</f:link.action>
+            <f:link.action action="show" arguments="{request:request}" class="btn btn-success btn-xs pull-right margin-right">SHOW</f:link.action>
+        </li>
+    </f:for>
+</ul>
+
+<f:link.action action="requestForm" class="btn btn-primary">Create your repair request</f:link.action>

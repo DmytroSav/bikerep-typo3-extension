@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:bikerep/Resources/Private/Language/locallang" date="2020-12-23T15:04:53Z" product-name="bikerep">
+		<header/>
+		<body>
+			<trans-unit id="tx_bikerep_domain_model_repairrequests" resname="tx_bikerep_domain_model_repairrequests">
+				<source>Repair Requests</source>
+			</trans-unit>
+			<trans-unit id="tx_bikerep_domain_model_repairrequests.title" resname="tx_bikerep_domain_model_repairrequests.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_bikerep_domain_model_repairrequests.request" resname="tx_bikerep_domain_model_repairrequests.request">
+				<source>Request</source>
+			</trans-unit>
+			<trans-unit id="tx_bikerep_domain_model_repairrequests.bike_model" resname="tx_bikerep_domain_model_repairrequests.bike_model">
+				<source>Bike Model</source>
+			</trans-unit>
+			<trans-unit id="tx_bikerep_domain_model_repairrequests.phone" resname="tx_bikerep_domain_model_repairrequests.phone">
+				<source>Phone</source>
+			</trans-unit>
+			<trans-unit id="tx_bikerep_domain_model_repairrequests.email" resname="tx_bikerep_domain_model_repairrequests.email">
+				<source>Email</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

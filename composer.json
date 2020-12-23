@@ -1,0 +1,28 @@
+{
+    "name": "rider/bikerep",
+    "type": "typo3-cms-extension",
+    "description": "bike repairing requests",
+    "authors": [
+        {
+            "name": "tim",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "typo3/cms-core": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Rider\\Bikerep\\": "Classes"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Rider\\Bikerep\\Tests\\": "Tests"
+        }
+    },
+    "replace": {
+        "rider/bikerep": "self.version",
+        "typo3-ter/bikerep": "self.version"
+    }
+}
