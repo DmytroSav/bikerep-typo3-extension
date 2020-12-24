@@ -61,9 +61,9 @@ class RepairRequestsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
      * @param \Rider\Bikerep\Domain\Model\RepairRequests $newRepairRequests
      * @return void
      */
-    public function createAction(\Rider\Bikerep\Domain\Model\RepairRequests $newRepairRequest)
+    public function createAction(\Rider\Bikerep\Domain\Model\RepairRequests $request)
     {
-        $this->repairRequestsRepository->add($newRepairRequest);
+        $this->repairRequestsRepository->add($request);
         $this->redirect('list');
     }
 
@@ -88,7 +88,7 @@ class RepairRequestsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
      */
     public function updateFormAction(\Rider\Bikerep\Domain\Model\RepairRequests $request)
     {
-        $this->view->assign('repairRequest', $request);
+        $this->view->assign('request', $request);
     }
 
     /**
@@ -97,9 +97,9 @@ class RepairRequestsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
      * @param \Rider\Bikerep\Domain\Model\RepairRequests $repairRequests
      * @return void
      */
-    public function updateAction(\Rider\Bikerep\Domain\Model\RepairRequests $repairRequest)
+    public function updateAction(\Rider\Bikerep\Domain\Model\RepairRequests $request)
     {
-        $this->repairRequestsRepository->update($repairRequest);
+        $this->repairRequestsRepository->update($request);
         $this->redirect('list');
     }
 
@@ -123,6 +123,29 @@ class RepairRequestsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
     public function deleteAction(\Rider\Bikerep\Domain\Model\RepairRequests $request)
     {
         $this->repairRequestsRepository->remove($request);
+        $this->redirect('list');
+    }
+
+    /**
+     * action confirm delete all records
+     * 
+     * @param \Rider\Bikerep\Domain\Model\RepairRequests $requests
+     * @return void
+     */
+    public function confirmDeleteAllAction(\Rider\Bikerep\Domain\Model\RepairRequests $requests=null)
+    {
+        $this->view->assign('requests', $requests);
+    }
+
+    /**
+     * action deletes all records
+     * 
+     * @param \Rider\Bikerep\Domain\Model\RepairRequests $request
+     * @return void
+     */
+    public function deleteAllAction()
+    {
+        $this->repairRequestsRepository->removeAll();
         $this->redirect('list');
     }
 }
