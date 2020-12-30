@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:bikerep/Resources/Private/Language/locallang_csh" date="2020-12-24T17:37:42Z" product-name="bikerep">
+		<header/>
+		<body>
+			<trans-unit id="model.description" resname="model.description">
+				<source>model</source>
+			</trans-unit>
+			<trans-unit id="cc.description" resname="cc.description">
+				<source>cc</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

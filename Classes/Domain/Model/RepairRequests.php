@@ -33,13 +33,6 @@ class RepairRequests extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $request = '';
 
     /**
-     * bikeModel
-     * 
-     * @var string
-     */
-    protected $bikeModel = '';
-
-    /**
      * phone
      * 
      * @var string
@@ -52,6 +45,13 @@ class RepairRequests extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var string
      */
     protected $email = '';
+
+    /**
+     * model
+     * 
+     * @var \Rider\Bikerep\Domain\Model\BikeModel
+     */
+    protected $model = null;
 
     /**
      * Returns the title
@@ -96,27 +96,6 @@ class RepairRequests extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the bikeModel
-     * 
-     * @return string $bikeModel
-     */
-    public function getBikeModel()
-    {
-        return $this->bikeModel;
-    }
-
-    /**
-     * Sets the bikeModel
-     * 
-     * @param string $bikeModel
-     * @return void
-     */
-    public function setBikeModel($bikeModel)
-    {
-        $this->bikeModel = $bikeModel;
-    }
-
-    /**
      * Returns the email
      * 
      * @return string $email
@@ -156,5 +135,26 @@ class RepairRequests extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setPhone($phone)
     {
         $this->phone = $phone;
+    }
+
+    /**
+     * Returns the model
+     * 
+     * @return \Rider\Bikerep\Domain\Model\BikeModel $model
+     */
+    public function getModel()
+    {
+        return $this->model;
+    }
+
+    /**
+     * Sets the model
+     * 
+     * @param \Rider\Bikerep\Domain\Model\BikeModel $model
+     * @return void
+     */
+    public function setModel(\Rider\Bikerep\Domain\Model\BikeModel $model)
+    {
+        $this->model = $model;
     }
 }

@@ -4,10 +4,19 @@
 
 <h1 class="text-center">Repair Requests</h1>
 
+<f:form action="list" additionalAttributes="{role:'form'}">
+    <div class="form-inline">
+        <div class="form-group">
+            <f:form.textfield name="search" value="{search}" class="form-control"/>
+            <f:form.submit value="Search" class="btn-xs btn-primary"/>
+        </div>
+    </div>
+</f:form>
+
 <ul class="list-group">
     <f:for each="{repairRequests}" as="request">
         <li class="list-group-item">{request.title} 
-            <span class="additional-info"> | <strong>M: {request.bikeModel}</strong></span>
+            <span class="additional-info"> | <strong>M: {request.model.model} {request.model.cc}</strong></span>
             <span class="additional-info"> | Ph: {request.phone}</span>
             <f:link.action action="confirmDelete" arguments="{request:request}" class="btn btn-danger btn-xs pull-right">DELETE</f:link.action>
             <f:link.action action="updateForm" arguments="{request:request}" class="btn btn-primary btn-xs pull-right margin-right">EDIT</f:link.action>

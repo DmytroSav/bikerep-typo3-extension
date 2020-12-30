@@ -1,6 +1,9 @@
 <?php
 namespace Rider\Bikerep\Controller;
 
+use Rider\Bikerep\Domain\Model\RepairRequests;
+use Rider\Bikerep\Domain\Model\BikeModel as Model;
+
 
 /***
  *
@@ -34,18 +37,23 @@ class RepairRequestsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
     }
 
     /**
-     * action list
+     * action list all requests
+     * 
+     * 
+     * @param string $search
      * 
      * @return void
      */
-    public function listAction()
+    public function listAction($search='')
     {
-        $repairRequests = $this->repairRequestsRepository->findAll();
+        $repairRequests = $this->repairRequestsRepository->findInfoByTitle($search);
+
         $this->view->assign('repairRequests', $repairRequests);
+        $this->view->assign('search', $search);
     }
 
     /**
-     * action show
+     * action show the request body
      * 
      * @param \Rider\Bikerep\Domain\Model\RepairRequests $repairRequests
      * @return void
@@ -55,32 +63,33 @@ class RepairRequestsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
         $this->view->assign('request', $request);
     }
 
-     /**
-     * action create
+    /**
+     * action createForm for making a request 
      * 
      * @param \Rider\Bikerep\Domain\Model\RepairRequests $newRepairRequests
      * @return void
      */
-    public function createAction(\Rider\Bikerep\Domain\Model\RepairRequests $request)
-    {
-        $this->repairRequestsRepository->add($request);
-        $this->redirect('list');
-    }
-
-     /**
-     * action createForm
-     * 
-     * @param \Rider\Bikerep\Domain\Model\RepairRequests $newRepairRequests
-     * @return void
-     */
-    public function requestFormAction(\Rider\Bikerep\Domain\Model\RepairRequests $newRepairRequest=null)
+    public function requestFormAction(RepairRequests $newRepairRequest=null)
     {
         $this->view->assign('request', $newRepairRequest);
     }
 
+    /**
+     * action create
+     * 
+     * @param \Rider\Bikerep\Domain\Model\RepairRequests $newRepairRequests
+     * 
+     * @return void
+     */
+    public function createAction(RepairRequests $request)
+    {
+        $this->repairRequestsRepository->add($request);
+
+        $this->redirect('list');
+    }
 
     /**
-     * action edit
+     * action show update form
      * 
      * @param \Rider\Bikerep\Domain\Model\RepairRequests $repairRequests
      * @ignorevalidation $repairRequests
@@ -97,32 +106,33 @@ class RepairRequestsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
      * @param \Rider\Bikerep\Domain\Model\RepairRequests $repairRequests
      * @return void
      */
-    public function updateAction(\Rider\Bikerep\Domain\Model\RepairRequests $request)
+    public function updateAction(RepairRequests $request)
     {
         $this->repairRequestsRepository->update($request);
         $this->redirect('list');
     }
 
-     /**
-     * action delete
+    /**
+     * action confirm request delete
      * 
      * @param \Rider\Bikerep\Domain\Model\RepairRequests $request
      * @return void
      */
-    public function confirmDeleteAction(\Rider\Bikerep\Domain\Model\RepairRequests $request)
+    public function confirmDeleteAction(RepairRequests $request)
     {
         $this->view->assign('request', $request);
     }
 
     /**
-     * action delete
+     * action  request delete
      * 
      * @param \Rider\Bikerep\Domain\Model\RepairRequests $request
      * @return void
      */
-    public function deleteAction(\Rider\Bikerep\Domain\Model\RepairRequests $request)
+    public function deleteAction(RepairRequests $request)
     {
         $this->repairRequestsRepository->remove($request);
+        $this->objectManager->get('Rider\\Bikerep\\Domain\\Repository\\BikeModelRepository')->remove($request->getModel());
         $this->redirect('list');
     }
 
@@ -132,7 +142,7 @@ class RepairRequestsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
      * @param \Rider\Bikerep\Domain\Model\RepairRequests $requests
      * @return void
      */
-    public function confirmDeleteAllAction(\Rider\Bikerep\Domain\Model\RepairRequests $requests=null)
+    public function confirmDeleteAllAction(RepairRequests $requests = null)
     {
         $this->view->assign('requests', $requests);
     }
@@ -146,6 +156,7 @@ class RepairRequestsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
     public function deleteAllAction()
     {
         $this->repairRequestsRepository->removeAll();
+        $this->objectManager->get('Rider\\Bikerep\\Domain\\Repository\\BikeModelRepository')->removeAll();
         $this->redirect('list');
     }
 }

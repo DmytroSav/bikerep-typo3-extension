@@ -1,8 +1,8 @@
 <?php
 return [
     'ctrl' => [
-        'title' => 'LLL:EXT:bikerep/Resources/Private/Language/locallang_db.xlf:tx_bikerep_domain_model_repairrequests',
-        'label' => 'title',
+        'title' => 'LLL:EXT:bikerep/Resources/Private/Language/locallang_db.xlf:tx_bikerep_domain_model_bikemodel',
+        'label' => 'model',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
@@ -16,14 +16,14 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'title,request,phone,email',
-        'iconfile' => 'EXT:bikerep/Resources/Public/Icons/tx_bikerep_domain_model_repairrequests.gif'
+        'searchFields' => 'model',
+        'iconfile' => 'EXT:bikerep/Resources/Public/Icons/tx_bikerep_domain_model_bikemodel.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, request, phone, email, model',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, model, cc',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, request, phone, email, model, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, model, cc, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -54,8 +54,8 @@ return [
                 'items' => [
                     ['', 0],
                 ],
-                'foreign_table' => 'tx_bikerep_domain_model_repairrequests',
-                'foreign_table_where' => 'AND {#tx_bikerep_domain_model_repairrequests}.{#pid}=###CURRENT_PID### AND {#tx_bikerep_domain_model_repairrequests}.{#sys_language_uid} IN (-1,0)',
+                'foreign_table' => 'tx_bikerep_domain_model_bikemodel',
+                'foreign_table_where' => 'AND {#tx_bikerep_domain_model_bikemodel}.{#pid}=###CURRENT_PID### AND {#tx_bikerep_domain_model_bikemodel}.{#sys_language_uid} IN (-1,0)',
             ],
         ],
         'l10n_diffsource' => [
@@ -116,55 +116,23 @@ return [
             ],
         ],
 
-        'title' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:bikerep/Resources/Private/Language/locallang_db.xlf:tx_bikerep_domain_model_repairrequests.title',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim'
-            ],
-        ],
-        'request' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:bikerep/Resources/Private/Language/locallang_db.xlf:tx_bikerep_domain_model_repairrequests.request',
-            'config' => [
-                'type' => 'text',
-                'cols' => 40,
-                'rows' => 15,
-                'eval' => 'trim'
-            ]
-        ],
-        'phone' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:bikerep/Resources/Private/Language/locallang_db.xlf:tx_bikerep_domain_model_repairrequests.phone',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim'
-            ],
-        ],
-        'email' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:bikerep/Resources/Private/Language/locallang_db.xlf:tx_bikerep_domain_model_repairrequests.email',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'nospace,email'
-            ]
-        ],
         'model' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:bikerep/Resources/Private/Language/locallang_db.xlf:tx_bikerep_domain_model_repairrequests.model',
+            'label' => 'LLL:EXT:bikerep/Resources/Private/Language/locallang_db.xlf:tx_bikerep_domain_model_bikemodel.model',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'foreign_table' => 'tx_bikerep_domain_model_bikemodel',
-                'default' => 0,
-                'minitems' => 0,
-                'maxitems' => 1,
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim'
             ],
-            
+        ],
+        'cc' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:bikerep/Resources/Private/Language/locallang_db.xlf:tx_bikerep_domain_model_bikemodel.cc',
+            'config' => [
+                'type' => 'input',
+                'size' => 4,
+                'eval' => 'int'
+            ]
         ],
     
     ],

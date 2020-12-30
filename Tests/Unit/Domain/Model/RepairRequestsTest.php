@@ -77,31 +77,6 @@ class RepairRequestsTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
     /**
      * @test
      */
-    public function getBikeModelReturnsInitialValueForString()
-    {
-        self::assertSame(
-            '',
-            $this->subject->getBikeModel()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setBikeModelForStringSetsBikeModel()
-    {
-        $this->subject->setBikeModel('Conceived at T3CON10');
-
-        self::assertAttributeEquals(
-            'Conceived at T3CON10',
-            'bikeModel',
-            $this->subject
-        );
-    }
-
-    /**
-     * @test
-     */
     public function getPhoneReturnsInitialValueForString()
     {
         self::assertSame(
@@ -145,6 +120,32 @@ class RepairRequestsTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
         self::assertAttributeEquals(
             'Conceived at T3CON10',
             'email',
+            $this->subject
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function getModelReturnsInitialValueForBikeModel()
+    {
+        self::assertEquals(
+            null,
+            $this->subject->getModel()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setModelForBikeModelSetsModel()
+    {
+        $modelFixture = new \Rider\Bikerep\Domain\Model\BikeModel();
+        $this->subject->setModel($modelFixture);
+
+        self::assertAttributeEquals(
+            $modelFixture,
+            'model',
             $this->subject
         );
     }

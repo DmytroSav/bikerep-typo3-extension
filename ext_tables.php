@@ -16,5 +16,8 @@ call_user_func(
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_bikerep_domain_model_repairrequests', 'EXT:bikerep/Resources/Private/Language/locallang_csh_tx_bikerep_domain_model_repairrequests.xlf');
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_bikerep_domain_model_repairrequests');
 
+        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_bikerep_domain_model_bikemodel', 'EXT:bikerep/Resources/Private/Language/locallang_csh_tx_bikerep_domain_model_bikemodel.xlf');
+        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_bikerep_domain_model_bikemodel');
+
     }
 );

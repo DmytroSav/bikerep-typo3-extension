@@ -17,4 +17,16 @@ namespace Rider\Bikerep\Domain\Repository;
  */
 class RepairRequestsRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
+
+    public function findInfoByTitle($search)
+    {
+        $query = $this->createQuery();
+        $query->matching(
+            $query->like('title', '%'.$search.'%')
+        );
+        $query->setOrderings(['title'=>\TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING]);
+        $query->setLimit(5);
+
+        return $query->execute();
+    }
 }

@@ -3,8 +3,8 @@
         {
             "config": {
                 "position": [
-                    382,
-                    217
+                    271,
+                    52
                 ]
             },
             "name": "New Model Object",
@@ -62,17 +62,6 @@
                             "propertyIsExcludeField": true,
                             "propertyIsL10nModeExclude": false,
                             "propertyIsRequired": false,
-                            "propertyName": "bikeModel",
-                            "propertyType": "String",
-                            "uid": "748239174075"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "",
-                            "propertyIsExcludeField": true,
-                            "propertyIsL10nModeExclude": false,
-                            "propertyIsRequired": false,
                             "propertyName": "phone",
                             "propertyType": "String",
                             "uid": "1480132307290"
@@ -87,6 +76,80 @@
                             "propertyName": "email",
                             "propertyType": "Email",
                             "uid": "742608344926"
+                        }
+                    ]
+                },
+                "relationGroup": {
+                    "relations": [
+                        {
+                            "foreignRelationClass": "",
+                            "lazyLoading": false,
+                            "propertyIsExcludeField": true,
+                            "relationDescription": "",
+                            "relationName": "model",
+                            "relationType": "manyToOne",
+                            "relationWire": "[wired]",
+                            "renderType": "selectSingle",
+                            "uid": "1268054689793"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "config": {
+                "position": [
+                    617,
+                    175
+                ]
+            },
+            "name": "New Model Object",
+            "value": {
+                "actionGroup": {
+                    "_default0_list": true,
+                    "_default1_show": false,
+                    "_default2_new_create": false,
+                    "_default3_edit_update": false,
+                    "_default4_delete": false,
+                    "customActions": []
+                },
+                "name": "BikeModel",
+                "objectsettings": {
+                    "addDeletedField": true,
+                    "addHiddenField": true,
+                    "addStarttimeEndtimeFields": true,
+                    "aggregateRoot": false,
+                    "categorizable": false,
+                    "description": "",
+                    "mapToTable": "",
+                    "parentClass": "",
+                    "sorting": false,
+                    "type": "Entity",
+                    "uid": "633749474522"
+                },
+                "propertyGroup": {
+                    "properties": [
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "model",
+                            "propertyType": "String",
+                            "uid": "360063026532"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "cc",
+                            "propertyType": "Integer",
+                            "uid": "690669405230"
                         }
                     ]
                 },
@@ -137,10 +200,23 @@
         ],
         "vendorName": "Rider"
     },
-    "wires": [],
+    "wires": [
+        {
+            "src": {
+                "moduleId": 0,
+                "terminal": "relationWire_0",
+                "uid": "1268054689793"
+            },
+            "tgt": {
+                "moduleId": 1,
+                "terminal": "SOURCES",
+                "uid": "633749474522"
+            }
+        }
+    ],
     "storagePath": "\/var\/www\/typo3-test\/public\/typo3conf\/ext\/",
     "log": {
-        "last_modified": "2020-12-23 03:04",
+        "last_modified": "2020-12-24 05:37",
         "extension_builder_version": "9.10.3",
         "be_user": " (1)"
     }
