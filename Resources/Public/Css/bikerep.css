@@ -20,6 +20,10 @@ body {
     margin-bottom: 10px;
 }
 
+.list-group {
+    margin-top: 20px;
+}
+
 .additional-info {
     margin-left: 10px;    
 }

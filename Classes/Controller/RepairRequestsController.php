@@ -53,7 +53,7 @@ class RepairRequestsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
     }
 
     /**
-     * action show the request body
+     * action shows the request body
      * 
      * @param \Rider\Bikerep\Domain\Model\RepairRequests $repairRequests
      * @return void
@@ -64,7 +64,7 @@ class RepairRequestsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
     }
 
     /**
-     * action createForm for making a request 
+     * action creates form for a request 
      * 
      * @param \Rider\Bikerep\Domain\Model\RepairRequests $newRepairRequests
      * @return void
@@ -75,7 +75,7 @@ class RepairRequestsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
     }
 
     /**
-     * action create
+     * action creates a request
      * 
      * @param \Rider\Bikerep\Domain\Model\RepairRequests $newRepairRequests
      * 
@@ -89,7 +89,7 @@ class RepairRequestsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
     }
 
     /**
-     * action show update form
+     * action show updates form
      * 
      * @param \Rider\Bikerep\Domain\Model\RepairRequests $repairRequests
      * @ignorevalidation $repairRequests

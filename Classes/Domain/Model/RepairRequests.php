@@ -22,6 +22,7 @@ class RepairRequests extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * title
      * 
      * @var string
+     * @validate NotEmpty, Rider.Bikerep:Word(max=7)
      */
     protected $title = '';
 
@@ -29,6 +30,8 @@ class RepairRequests extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * request
      * 
      * @var string
+     * @validate NotEmpty
+     * 
      */
     protected $request = '';
 
@@ -36,6 +39,8 @@ class RepairRequests extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * phone
      * 
      * @var string
+     * @validate NotEmpty
+     * 
      */
     protected $phone = 0;
 
@@ -43,6 +48,8 @@ class RepairRequests extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * email
      * 
      * @var string
+     * @validate EmailAddress
+     * 
      */
     protected $email = '';
 
@@ -50,6 +57,8 @@ class RepairRequests extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * model
      * 
      * @var \Rider\Bikerep\Domain\Model\BikeModel
+     * @validate NotEmpty
+     * 
      */
     protected $model = null;
 
