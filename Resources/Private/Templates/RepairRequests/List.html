@@ -4,7 +4,7 @@
 
 <h1 class="text-center">Repair Requests</h1>
 
-<f:form>
+<f:form action="ajaxSearch">
     <div class="form-inline">
         <div class="form-group">
             <f:form.textfield name="search" id="searcharea" value="{search}" class="form-control"/>
@@ -16,10 +16,11 @@
 <script type="text/javascript">
 $(document).ready(function(){
     $('#searchsubmit').click(function(){
-        var ajaxURL = '<f:uri.action action="ajaxSearch" pageType="666" arguments="{search:search}" noCacheHash="1"  />';
+        var ajaxURL = '<f:uri.action action="ajaxSearch" pageType="666" noCacheHash="1" />';
         var form = $('form');
         // console.log('cs clicked!!', ajaxURL, form);
-        $.post(ajaxURL, form.serialize(), function(response){
+        
+        $.get(decodeURI(ajaxURL)+'&tx_bikerep_bikerepfront[search]=' + $('#searcharea').val(), function(response){
             console.log('resss', response);
             // repairRequests = response;
             // var items = [];

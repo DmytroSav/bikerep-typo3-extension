@@ -46,7 +46,6 @@ class RepairRequestsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
      */
     public function listAction($search='')
     {
-
         $limit = $this->settings['requests']['max'];
         $repairRequests = $this->repairRequestsRepository->findInfoByTitle($search, $limit);
 
@@ -55,32 +54,18 @@ class RepairRequestsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
         $this->view->assign('list-class', 'list-group');
     }
 
-    public function checkAjax()
-    {
-   $responseData =   json_encode([
-            'status' => 'OK',
-            'data' => [
-                'user'=> 'John Doe',
-                'Message' => 'Hello world'
-           ]
-        ], JSON_UNESCAPED_UNICODE);
-
-        $response->getBody()->write($this->createSuccessResponseObject($responseData));
-        return $response
-            ->withStatus(200)
-            ->withHeader('Content-Type', 'application/json');
-    }
-
-
     /**
      * action search using ajax requests
+     * 
+     * @param string $search
      * 
      *  
      * @return void
      */
     public function ajaxSearchAction($search='')
     {
-        $repairRequests = $this->repairRequestsRepository->findInfoByTitle($search);
+        $limit = $this->settings['requests']['max'];
+        $repairRequests = $this->repairRequestsRepository->findInfoByTitle($search, $limit);
 
         foreach ($repairRequests as $rr) {
 
