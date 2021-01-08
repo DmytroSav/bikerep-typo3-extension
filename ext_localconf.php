@@ -9,11 +9,11 @@ call_user_func(
             'Rider.Bikerep',
             'Bikerepfront',
             [
-                'RepairRequests' => 'list, requestForm, create, show, updateForm, update, confirmDelete, delete, confirmDeleteAll, deleteAll'
+                'RepairRequests' => 'list, requestForm, create, show, updateForm, update, confirmDelete, delete, confirmDeleteAll, deleteAll, ajaxSearch'
             ],
             // non-cacheable actions
             [
-                'RepairRequests' => 'list, requestForm, create, show, updateForm, update, confirmDelete, delete, confirmDeleteAll, deleteAll'
+                'RepairRequests' => 'list, requestForm, create, show, updateForm, update, confirmDelete, delete, confirmDeleteAll, deleteAll, ajaxSearch'
             ]
         );
 

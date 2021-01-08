@@ -46,10 +46,58 @@ class RepairRequestsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
      */
     public function listAction($search='')
     {
-        $repairRequests = $this->repairRequestsRepository->findInfoByTitle($search);
+
+        $limit = $this->settings['requests']['max'];
+        $repairRequests = $this->repairRequestsRepository->findInfoByTitle($search, $limit);
 
         $this->view->assign('repairRequests', $repairRequests);
         $this->view->assign('search', $search);
+        $this->view->assign('list-class', 'list-group');
+    }
+
+    public function checkAjax()
+    {
+   $responseData =   json_encode([
+            'status' => 'OK',
+            'data' => [
+                'user'=> 'John Doe',
+                'Message' => 'Hello world'
+           ]
+        ], JSON_UNESCAPED_UNICODE);
+
+        $response->getBody()->write($this->createSuccessResponseObject($responseData));
+        return $response
+            ->withStatus(200)
+            ->withHeader('Content-Type', 'application/json');
+    }
+
+
+    /**
+     * action search using ajax requests
+     * 
+     *  
+     * @return void
+     */
+    public function ajaxSearchAction($search='')
+    {
+        $repairRequests = $this->repairRequestsRepository->findInfoByTitle($search);
+
+        foreach ($repairRequests as $rr) {
+
+            $json[] = [
+                'title' => $rr->getTitle(),
+                'model' => [
+                    'cc' => $rr->getModel()->getCc(),
+                    'model'=> $rr->getModel()->getModel(),
+                ],
+                'phone' => $rr->getPhone()
+            ];
+         }
+
+        // \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($this->settings);
+
+
+        return json_encode($json);
     }
 
     /**

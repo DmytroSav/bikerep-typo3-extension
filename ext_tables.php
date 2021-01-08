@@ -21,3 +21,9 @@ call_user_func(
 
     }
 );
+
+        $pluginSignature = 'bikerep_bikerepfront';
+        $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
+
+        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue($pluginSignature, 
+        'FILE:EXT:bikerep/Configuration/FlexForms/flexform_bikerep.xml');

@@ -22,6 +22,12 @@ plugin.tx_bikerep_bikerepfront {
     mvc {
         #callDefaultActionIfActionCantBeResolved = 1
     }
+    settings{
+        requests{
+            max = 6,
+            display = grid,
+        }
+    }
 }
 
 # these classes are only used in auto-generated templates
@@ -64,9 +70,27 @@ page {
         bootstrap = EXT:bikerep/Resources/Public/Bootstrap/css/bootstrap.min.css
         blogga = EXT:bikerep/Resources/Public/Css/bikerep.css
     }
-    includeJSlibs {
+    includeJS {
         jquery = //code.jquery.com/jquery.js
         jquery.external = 1
         bootsrap = EXT:bikerep/Resources/Public/Bootstrap/js/bootstrap.min.js
     }
+}
+
+ajaxCall = PAGE
+ajaxCall {
+    typeNum = 666
+
+    config {
+        disableAllHeaderCode = 1
+        additionalHeaders = Content-type: application/json, utf-8
+        
+        xhtml_cleaning = 0
+        admPanel = 0
+        debug = 0
+        no_cache = 1
+    }
+
+    10 < tt_content.list.20.bikerep_bikerepfront
+
 }

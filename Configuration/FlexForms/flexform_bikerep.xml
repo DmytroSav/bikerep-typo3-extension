@@ -1,0 +1,26 @@
+<T3DataStructure>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>Requests list configurations</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <settings.requests.max>
+                        <TCEforms>
+                            <label>Max number of requests</label>
+                            <config>
+                                <type>input</type>
+                                <size>2</size>
+                                <eval>int</eval>
+                                <default>10</default>
+                            </config>
+                        </TCEforms>
+                    </settings.requests.max>
+                </el>
+            </ROOT>                 
+        </sDEF>
+    </sheets>
+</T3DataStructure>
+

@@ -4,14 +4,37 @@
 
 <h1 class="text-center">Repair Requests</h1>
 
-<f:form action="list" additionalAttributes="{role:'form'}">
+<f:form>
     <div class="form-inline">
         <div class="form-group">
-            <f:form.textfield name="search" value="{search}" class="form-control"/>
-            <f:form.submit value="Search" class="btn-xs btn-primary"/>
+            <f:form.textfield name="search" id="searcharea" value="{search}" class="form-control"/>
+            <f:form.submit value="Search" id="searchsubmit" class="btn-xs btn-primary"/>
         </div>
     </div>
 </f:form>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#searchsubmit').click(function(){
+        var ajaxURL = '<f:uri.action action="ajaxSearch" pageType="666" arguments="{search:search}" noCacheHash="1"  />';
+        var form = $('form');
+        // console.log('cs clicked!!', ajaxURL, form);
+        $.post(ajaxURL, form.serialize(), function(response){
+            console.log('resss', response);
+            // repairRequests = response;
+            // var items = [];
+            // $.each(response, function(key, val){
+                // items.push('<li class="list-group-item">' + val.comment + '<span class="text-muted">(' + val.commentdate.date+ ')</span>' + '</li>');
+            //  });
+            // $('#comments').html(items.reverse(),join(''));
+            // $('#commentsfield').val('');
+        });
+        return false;
+    });
+});
+
+</script>
+
 
 <ul class="list-group margin-top">
     <f:for each="{repairRequests}" as="request">
@@ -20,10 +43,12 @@
             <span class="additional-info"> | Ph: {request.phone}</span>
             <f:link.action action="confirmDelete" arguments="{request:request}" class="btn btn-danger btn-xs pull-right">DELETE</f:link.action>
             <f:link.action action="updateForm" arguments="{request:request}" class="btn btn-primary btn-xs pull-right margin-right">EDIT</f:link.action>
-            <f:link.action action="show" arguments="{request:request}" class="btn btn-success btn-xs pull-right margin-right">SHOW</f:link.action>
+            <f:link.action action="show" arguments="{request:request}" class="btn btn-success btn-xs pull-right margin-right margin-left">SHOW</f:link.action>
         </li>
     </f:for>
 </ul>
+
+<div class="margin-bottom">[displaying up to <strong>{settings.requests.max}</strong> requests a page]</div>
 
 <f:link.action action="requestForm" class="btn btn-primary">Create your repair request</f:link.action>
 <f:link.action action="confirmDeleteAll" class="btn btn-danger pull-right">Delete all requests</f:link.action>
