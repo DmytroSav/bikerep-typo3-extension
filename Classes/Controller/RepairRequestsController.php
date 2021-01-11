@@ -21,6 +21,11 @@ use Rider\Bikerep\Domain\Model\BikeModel as Model;
 class RepairRequestsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
 
+    public function check(){
+
+        echo 'check_passed'; die();
+    }
+
     /**
      * repairRequestsRepository
      * 
@@ -79,10 +84,9 @@ class RepairRequestsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
             ];
          }
 
-        // \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($this->settings);
+        // \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump();
 
-
-        return json_encode($json);
+        return is_null($json) ? null : json_encode($json);
     }
 
     /**

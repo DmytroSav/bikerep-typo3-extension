@@ -24,7 +24,6 @@ plugin.tx_bikerep_bikerepfront {
     }
     settings{
         requests{
-            max = 6,
             display = grid,
         }
     }
@@ -81,6 +80,8 @@ ajaxCall = PAGE
 ajaxCall {
     typeNum = 666
 
+    10 < tt_content.list.20.bikerep_bikerepfront
+
     config {
         disableAllHeaderCode = 1
         additionalHeaders = Content-type: application/json, utf-8
@@ -89,8 +90,5 @@ ajaxCall {
         admPanel = 0
         debug = 0
         no_cache = 1
-    }
-
-    10 < tt_content.list.20.bikerep_bikerepfront
-
+    }    
 }

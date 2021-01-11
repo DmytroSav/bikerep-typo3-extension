@@ -1,6 +1,8 @@
 <?php
 defined('TYPO3_MODE') || die('Access denied.');
 
+$GLOBALS['TYPO3_CONF_VARS']['FE']['eID_include']['ajax_page'] = \Rider\Bikerep\Controller\RepairRequestsController::class . '::check';
+
 call_user_func(
     function()
     {

@@ -16,28 +16,41 @@
 <script type="text/javascript">
 $(document).ready(function(){
     $('#searchsubmit').click(function(){
-        var ajaxURL = '<f:uri.action action="ajaxSearch" pageType="666" noCacheHash="1" />';
-        var form = $('form');
-        // console.log('cs clicked!!', ajaxURL, form);
-        
-        $.get(decodeURI(ajaxURL)+'&tx_bikerep_bikerepfront[search]=' + $('#searcharea').val(), function(response){
-            console.log('resss', response);
-            // repairRequests = response;
-            // var items = [];
-            // $.each(response, function(key, val){
-                // items.push('<li class="list-group-item">' + val.comment + '<span class="text-muted">(' + val.commentdate.date+ ')</span>' + '</li>');
-            //  });
-            // $('#comments').html(items.reverse(),join(''));
-            // $('#commentsfield').val('');
-        });
-        return false;
+        // var ajaxURL = '<f:uri.action action="ajaxSearch" pageType="666" noCacheHash="1"/>';
+        // search = 'tx_bikerep_bikerepfront[search]=' + $('#searcharea').val();
+
+        // var form = $('form');
+        // console.log('submitted', ajaxURL + '&' + search);     
+           
+    var pagetype = 'type=666',
+    action = 'tx_bikerep_bikerepfront[action]=ajaxSearch',
+    search = 'tx_bikerep_bikerepfront[search]=' + $('#searcharea').val();
+
+    var request = $.ajax({
+        type: 'GET',
+        url: '/?' + action + '&' + pagetype + '&' + search
+    });
+
+    request.done(function( res ) {
+       if(res){
+            let requests = [];
+                $.each(JSON.parse(res), function(key, val){
+            requests.push('<li class="list-group-item">' + val.title +
+            '<span class="additional-info"> | <strong>M: ' + val.model.model + val.model.cc + 
+            '</strong></span><span class="additional-info"> | Ph:' + val.phone + '</span>');
+                });
+            $('#requestsList').html(requests.reverse().join(''));
+       }
+       else alert('No requests found by requested parameters');
+    });
+    return false;
     });
 });
 
 </script>
 
 
-<ul class="list-group margin-top">
+<ul class="list-group margin-top" id="requestsList">
     <f:for each="{repairRequests}" as="request">
         <li class="list-group-item">{request.title} 
             <span class="additional-info"> | <strong>M: {request.model.model} {request.model.cc}</strong></span>
